@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav id="nav">
     <a class="brand" href="index.html">MADAM WIZZY</a>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -20,29 +20,30 @@
   </nav>
 
   <section class="hero hero-short">
+    <canvas id="star-canvas"></canvas>
     <div class="hero-content">
       <p class="eyebrow">Reach Out</p>
       <h1>Help A Wizza?</h1>
-      <p class="tagline">Got ideas, questions, or just want to be part of what we're building? We're listening.</p>
+      <p class="tagline">Ideas, questions, collaborations, resources — we want all of it. No gatekeeping here.</p>
     </div>
   </section>
 
   <section class="contact-section">
     <div class="container contact-container">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-group">
+      <form class="contact-form" id="contact-form">
+        <div class="form-group reveal">
           <label for="name">Your Name</label>
           <input type="text" id="name" name="name" placeholder="What shall I call you?" required />
         </div>
-        <div class="form-group">
+        <div class="form-group reveal reveal-delay-1">
           <label for="email">Your Email</label>
           <input type="email" id="email" name="email" placeholder="Where can we reach you?" required />
         </div>
-        <div class="form-group">
+        <div class="form-group reveal reveal-delay-2">
           <label for="message">What's On Your Mind?</label>
           <textarea id="message" name="message" rows="6" placeholder="Ideas, questions, collaborations — lay it on us..." required></textarea>
         </div>
-        <button type="submit" class="btn btn-full">Send It Into the Universe</button>
+        <button type="submit" class="btn btn-full reveal reveal-delay-3">Send It Into the Universe</button>
         <p class="form-note" id="form-status"></p>
       </form>
     </div>
@@ -50,22 +51,17 @@
 
   <footer>
     <div class="footer-inner">
-      <p class="brand">MADAM WIZZY</p>
-      <p class="footer-sub">A nonprofit organization.</p>
-      <p class="footer-store"><a href="https://wizardshit.store" target="_blank" rel="noopener">wizardshit.store</a> — all proceeds fund the mission.</p>
+      <a class="brand" href="index.html">MADAM WIZZY</a>
+      <nav class="footer-nav">
+        <a href="mission.html">Mission</a>
+        <a href="https://wizardshit.store" target="_blank" rel="noopener">wizardshit.store</a>
+        <a href="help.html">Help A Wizza?</a>
+      </nav>
+      <p class="footer-store"><a href="https://wizardshit.store" target="_blank" rel="noopener">wizardshit.store</a> — 100% of proceeds fund the mission.</p>
       <p class="footer-copy">&copy; 2026 Madam Wizzy NFP. All rights reserved.</p>
     </div>
   </footer>
 
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const status = document.getElementById('form-status');
-      status.textContent = 'Your message has been sent into the universe. ✦';
-      status.style.opacity = '1';
-      e.target.reset();
-    }
-  </script>
-
+  <script src="main.js"></script>
 </body>
 </html>

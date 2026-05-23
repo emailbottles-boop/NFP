@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav id="nav">
     <a class="brand" href="index.html">MADAM WIZZY</a>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -20,6 +20,7 @@
   </nav>
 
   <section class="hero hero-short">
+    <canvas id="star-canvas"></canvas>
     <div class="hero-content">
       <p class="eyebrow">WIZ@RD SHIT NFP</p>
       <h1>Our Mission</h1>
@@ -30,7 +31,7 @@
   <section class="mission-body">
     <div class="container mission-container">
 
-      <div class="mission-block">
+      <div class="mission-block reveal">
         <span class="section-label">Mission Statement</span>
         <h2>Breathe Magic Back Into the World</h2>
         <p class="mission-text">
@@ -38,10 +39,10 @@
         </p>
       </div>
 
-      <div class="mission-block">
+      <div class="mission-block reveal">
         <span class="section-label">Value Statement</span>
         <h2>What We Stand For</h2>
-        <p class="mission-text">Everything we do is rooted in eight core values:</p>
+        <p class="mission-text">Everything we build is rooted in eight principles:</p>
         <div class="values-grid values-grid-lg">
           <div class="value-chip">Communication</div>
           <div class="value-chip">Growth</div>
@@ -54,13 +55,16 @@
         </div>
       </div>
 
-      <div class="mission-block">
-        <span class="section-label">The Store</span>
+      <div class="mission-block reveal">
+        <span class="section-label">The Funding Model</span>
         <h2>wizardshit.store Is Our Engine</h2>
         <p class="mission-text">
-          Madam Wizzy NFP owns and operates <a href="https://wizardshit.store" target="_blank" rel="noopener" class="inline-link">wizardshit.store</a>. Every purchase made there flows directly back into funding education, creative programming, and community impact. When you shop with us, you spark something real.
+          Madam Wizzy NFP owns and operates <a href="https://wizardshit.store" target="_blank" rel="noopener" class="inline-link">wizardshit.store</a>. Every purchase made there flows directly back into funding education, creative programming, and community impact.
         </p>
-        <a href="https://wizardshit.store" target="_blank" rel="noopener" class="btn" style="margin-top:1.8rem;">Shop Now ↗</a>
+        <p class="mission-text">
+          826 National runs a Pirate Supply Store to fund youth writing programs. We run wizardshit.store to fund wonder. When you shop with us, you're not just buying — you're casting.
+        </p>
+        <a href="https://wizardshit.store" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:1.8rem;">Shop Now ↗</a>
       </div>
 
     </div>
@@ -68,20 +72,28 @@
 
   <section class="cta">
     <div class="container">
-      <h2>Ready to Make a Difference?</h2>
-      <p>Get in touch. We're building something real.</p>
-      <a href="help.html" class="btn">Help A Wizza?</a>
+      <h2 class="reveal">Ready to Make a Difference?</h2>
+      <p class="reveal reveal-delay-1">Get in touch. We're building something real.</p>
+      <div class="hero-btns reveal reveal-delay-2">
+        <a href="help.html" class="btn">Help A Wizza?</a>
+        <a href="https://wizardshit.store" target="_blank" rel="noopener" class="btn btn-gold">Shop the Store ↗</a>
+      </div>
     </div>
   </section>
 
   <footer>
     <div class="footer-inner">
-      <p class="brand">MADAM WIZZY</p>
-      <p class="footer-sub">A nonprofit organization.</p>
-      <p class="footer-store"><a href="https://wizardshit.store" target="_blank" rel="noopener">wizardshit.store</a> — all proceeds fund the mission.</p>
+      <a class="brand" href="index.html">MADAM WIZZY</a>
+      <nav class="footer-nav">
+        <a href="mission.html">Mission</a>
+        <a href="https://wizardshit.store" target="_blank" rel="noopener">wizardshit.store</a>
+        <a href="help.html">Help A Wizza?</a>
+      </nav>
+      <p class="footer-store"><a href="https://wizardshit.store" target="_blank" rel="noopener">wizardshit.store</a> — 100% of proceeds fund the mission.</p>
       <p class="footer-copy">&copy; 2026 Madam Wizzy NFP. All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
