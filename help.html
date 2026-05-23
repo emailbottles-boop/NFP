@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Help A Wizza? — Madam Wizzy</title>
+  <title>Help A Wizza? — Madam Wizzy NFP</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
 </head>
@@ -13,7 +13,9 @@
     <a class="brand" href="index.html">MADAM WIZZY</a>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="help.html" class="active">Help A Wizza?</a></li>
+      <li><a href="mission.html">Our Mission</a></li>
+      <li><a href="https://wizardshit.store" target="_blank" rel="noopener" class="nav-store">Shop ↗</a></li>
+      <li><a href="help.html" class="active nav-cta">Help A Wizza?</a></li>
     </ul>
   </nav>
 
@@ -21,7 +23,7 @@
     <div class="hero-content">
       <p class="eyebrow">Reach Out</p>
       <h1>Help A Wizza?</h1>
-      <p class="tagline">Tell me what you need. I'm listening.</p>
+      <p class="tagline">Got ideas, questions, or just want to be part of what we're building? We're listening.</p>
     </div>
   </section>
 
@@ -34,11 +36,11 @@
         </div>
         <div class="form-group">
           <label for="email">Your Email</label>
-          <input type="email" id="email" name="email" placeholder="Where can I reach you?" required />
+          <input type="email" id="email" name="email" placeholder="Where can we reach you?" required />
         </div>
         <div class="form-group">
-          <label for="message">What Do You Need?</label>
-          <textarea id="message" name="message" rows="6" placeholder="Tell Madam Wizzy what's on your mind..." required></textarea>
+          <label for="message">What's On Your Mind?</label>
+          <textarea id="message" name="message" rows="6" placeholder="Ideas, questions, collaborations — lay it on us..." required></textarea>
         </div>
         <button type="submit" class="btn btn-full">Send It Into the Universe</button>
         <p class="form-note" id="form-status"></p>
@@ -47,8 +49,12 @@
   </section>
 
   <footer>
-    <p class="brand">MADAM WIZZY</p>
-    <p class="footer-sub">&copy; 2026 Madam Wizzy. All rights reserved.</p>
+    <div class="footer-inner">
+      <p class="brand">MADAM WIZZY</p>
+      <p class="footer-sub">A nonprofit organization.</p>
+      <p class="footer-store"><a href="https://wizardshit.store" target="_blank" rel="noopener">wizardshit.store</a> — all proceeds fund the mission.</p>
+      <p class="footer-copy">&copy; 2026 Madam Wizzy NFP. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
