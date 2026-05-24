@@ -98,17 +98,45 @@
 })();
 
 
-/* ── MODULE: Contact form ────────────────────────────────────── */
-(function initContactForm() {
-  const form   = document.querySelector('.contact-form');
-  const status = document.getElementById('form-status');
-  if (!form || !status) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    status.textContent = 'Your message has been sent into the universe. ✦';
-    status.style.opacity = '1';
-    form.reset();
-  });
+/* ── MODULE: Forms → Formspree (silent, no redirect) ────────── */
+(function initForms() {
+  const ENDPOINT = 'https://formspree.io/f/mqejlnwe';
+
+  function bindForm(formId, statusId, successMsg) {
+    const form   = document.getElementById(formId);
+    const status = document.getElementById(statusId);
+    if (!form || !status) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+
+      try {
+        const res = await fetch(ENDPOINT, {
+          method:  'POST',
+          headers: { 'Accept': 'application/json' },
+          body:    new FormData(form),
+        });
+        if (res.ok) {
+          status.textContent  = successMsg;
+          status.style.opacity = '1';
+          form.reset();
+        } else {
+          status.textContent  = 'Something went wrong — try again.';
+          status.style.opacity = '1';
+        }
+      } catch {
+        status.textContent  = 'Something went wrong — try again.';
+        status.style.opacity = '1';
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  }
+
+  bindForm('contact-form', 'form-status',  'Your message has been sent into the universe. ✦');
+  bindForm('join-form',    'join-status',   "You're in. We'll be in touch. ✦");
 })();
 
 

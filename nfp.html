@@ -106,17 +106,5 @@
   </footer>
 
   <script src="main.js"></script>
-  <script>
-    const joinForm = document.getElementById('join-form');
-    const joinStatus = document.getElementById('join-status');
-    if (joinForm) {
-      joinForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        joinStatus.textContent = "You're in. We'll be in touch. ✦";
-        joinStatus.style.opacity = '1';
-        joinForm.reset();
-      });
-    }
-  </script>
 </body>
 </html>
