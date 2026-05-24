@@ -274,20 +274,22 @@ nav ul a.nav-cta:hover   { background: rgba(245,238,248,0.1); border-color: var(
 
 .ticker-track:hover { animation-play-state: paused; }
 
-.ticker-link {
+.ticker-link,
+.ticker-link:link,
+.ticker-link:visited {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.3rem;
   font-weight: 300;
   font-style: italic;
   letter-spacing: 0.06em;
-  color: var(--gold);
-  text-decoration: none;
+  color: var(--gold) !important;
+  text-decoration: none !important;
   transition: color 0.2s, opacity 0.2s;
   opacity: 0.85;
 }
 
 .ticker-link:hover {
-  color: var(--white);
+  color: var(--white) !important;
   opacity: 1;
 }
 
