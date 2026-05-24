@@ -89,6 +89,25 @@ if (counters.length) {
   counters.forEach(el => counterObserver.observe(el));
 }
 
+/* ── Pill nav active state on scroll ── */
+const pills = document.querySelectorAll('.pill');
+const pillSections = ['wizard-city','harm-reduction','positivity','high-magic','higher-minds']
+  .map(id => document.getElementById(id))
+  .filter(Boolean);
+
+if (pills.length && pillSections.length) {
+  window.addEventListener('scroll', () => {
+    let current = '';
+    pillSections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 140) current = sec.id;
+    });
+    pills.forEach(pill => {
+      const href = pill.getAttribute('href').replace('#','');
+      pill.classList.toggle('active', href === current);
+    });
+  }, { passive: true });
+}
+
 /* ── Contact form ── */
 const form = document.querySelector('.contact-form');
 if (form) {
