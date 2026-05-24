@@ -55,6 +55,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   padding: 1.4rem 3rem;
   transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.3s ease;
 }
@@ -956,9 +957,8 @@ footer .brand {
   .cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   nav ul li:not(:last-child) { display: none; }
-  nav ul li:last-child a.nav-cta { display: inline-block; }
 }
 
 @media (max-width: 640px) {
