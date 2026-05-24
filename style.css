@@ -252,41 +252,53 @@ nav ul a.nav-cta:hover   { background: rgba(245,238,248,0.1); border-color: var(
   margin-bottom: 1rem;
 }
 
-/* ── Pill Nav ── */
-.pill-nav {
+/* ── Ticker ── */
+.ticker {
+  overflow: hidden;
+  background: rgba(212,169,106,0.07);
+  border-top: 1px solid rgba(212,169,106,0.18);
+  border-bottom: 1px solid rgba(212,169,106,0.18);
+  padding: 1rem 0;
+  user-select: none;
+}
+
+.ticker-track {
   display: flex;
-  gap: 0.8rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 1.6rem 2rem;
-  background: rgba(18,0,30,0.7);
-  border-top: 1px solid rgba(212,169,106,0.15);
-  border-bottom: 1px solid rgba(212,169,106,0.15);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 64px;
-  z-index: 99;
-}
-
-.pill {
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid rgba(212,169,106,0.35);
-  padding: 0.55rem 1.4rem;
-  border-radius: 100px;
-  text-decoration: none;
+  gap: 2.5rem;
+  width: max-content;
+  animation: tickerMove 24s linear infinite;
   white-space: nowrap;
-  transition: background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s;
+  align-items: center;
 }
 
-.pill:hover, .pill.active {
-  background: var(--gold);
-  color: var(--c4);
-  border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(212,169,106,0.25);
+.ticker-track:hover { animation-play-state: paused; }
+
+.ticker-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+  opacity: 0.85;
+}
+
+.ticker-link:hover {
+  color: var(--white);
+  opacity: 1;
+}
+
+.ticker-track .sep {
+  color: var(--gold);
+  opacity: 0.35;
+  font-size: 1rem;
+}
+
+@keyframes tickerMove {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ── Declaration ── */
