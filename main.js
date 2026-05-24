@@ -89,6 +89,14 @@ if (counters.length) {
   counters.forEach(el => counterObserver.observe(el));
 }
 
+/* ── Ticker click to scroll ── */
+document.querySelectorAll('.ticker-link').forEach(el => {
+  el.addEventListener('click', () => {
+    const target = document.getElementById(el.dataset.target);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
 /* ── Pill nav active state on scroll ── */
 const pills = document.querySelectorAll('.pill');
 const pillSections = ['wizard-city','harm-reduction','positivity','high-magic','higher-minds']
