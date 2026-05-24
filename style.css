@@ -956,10 +956,13 @@ footer .brand {
   .cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 }
 
+@media (max-width: 900px) {
+  nav ul li:not(:last-child) { display: none; }
+  nav ul li:last-child a.nav-cta { display: inline-block; }
+}
+
 @media (max-width: 640px) {
   nav { padding: 1rem 1.5rem; }
-  nav ul { gap: 1.2rem; }
-  nav ul a.nav-cta { display: none; }
   .hero, .declaration, .about, .store-section, .vision, .values, .involve, .cta, .contact-section, .mission-body { padding-left: 1.5rem; padding-right: 1.5rem; }
   .badge-ring { width: 190px; height: 190px; }
   .hero-btns { flex-direction: column; align-items: center; }
