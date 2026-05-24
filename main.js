@@ -1,14 +1,24 @@
-/* ── Nav scroll behavior ── */
-const nav = document.getElementById('nav');
-if (nav) {
+/* ================================================================
+   MADAM WIZZY — main.js
+   Each section is a self-contained module.
+   Add new features at the bottom without touching existing ones.
+   ================================================================ */
+
+
+/* ── MODULE: Nav darkens on scroll ──────────────────────────── */
+(function initNav() {
+  const nav = document.getElementById('nav');
+  if (!nav) return;
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
   }, { passive: true });
-}
+})();
 
-/* ── Star canvas ── */
-const canvas = document.getElementById('star-canvas');
-if (canvas) {
+
+/* ── MODULE: Star canvas ─────────────────────────────────────── */
+(function initStars() {
+  const canvas = document.getElementById('star-canvas');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let stars = [];
 
@@ -17,7 +27,7 @@ if (canvas) {
     canvas.height = canvas.offsetHeight;
   }
 
-  function initStars() {
+  function initStarField() {
     stars = Array.from({ length: 220 }, () => ({
       x:     Math.random() * canvas.width,
       y:     Math.random() * canvas.height,
@@ -28,7 +38,7 @@ if (canvas) {
     }));
   }
 
-  function drawStars() {
+  function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (const s of stars) {
       s.alpha += s.speed * s.dir;
@@ -38,18 +48,20 @@ if (canvas) {
       ctx.fillStyle = `rgba(245,238,248,${s.alpha})`;
       ctx.fill();
     }
-    requestAnimationFrame(drawStars);
+    requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', () => { resize(); initStars(); }, { passive: true });
+  window.addEventListener('resize', () => { resize(); initStarField(); }, { passive: true });
   resize();
-  initStars();
-  drawStars();
-}
+  initStarField();
+  draw();
+})();
 
-/* ── Scroll reveal ── */
-const revealEls = document.querySelectorAll('.reveal:not(.hero .reveal)');
-if (revealEls.length) {
+
+/* ── MODULE: Scroll reveal ───────────────────────────────────── */
+(function initReveal() {
+  const els = document.querySelectorAll('.reveal:not(.hero .reveal)');
+  if (!els.length) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -58,74 +70,49 @@ if (revealEls.length) {
       }
     });
   }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
-}
+  els.forEach(el => observer.observe(el));
+})();
 
-/* ── Counter animation ── */
-function animateCount(el) {
-  const target = parseInt(el.dataset.target, 10);
-  const suffix = el.dataset.suffix || '';
-  const duration = 1800;
-  const start = performance.now();
-  function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
 
-const counters = document.querySelectorAll('.vision-num[data-target]');
-if (counters.length) {
-  const counterObserver = new IntersectionObserver((entries) => {
+/* ── MODULE: Vision number counters ─────────────────────────── */
+(function initCounters() {
+  const counters = document.querySelectorAll('.vision-num[data-target]');
+  if (!counters.length) return;
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCount(e.target);
-        counterObserver.unobserve(e.target);
-      }
+      if (!e.isIntersecting) return;
+      const el     = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const start  = performance.now();
+      const dur    = 1800;
+      (function step(now) {
+        const p = Math.min((now - start) / dur, 1);
+        el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      })(start);
+      observer.unobserve(el);
     });
   }, { threshold: 0.5 });
-  counters.forEach(el => counterObserver.observe(el));
-}
+  counters.forEach(el => observer.observe(el));
+})();
 
-/* ── Ticker click to scroll ── */
-document.querySelectorAll('.ticker-link').forEach(el => {
-  el.addEventListener('click', () => {
-    const target = document.getElementById(el.dataset.target);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
 
-/* ── Pill nav active state on scroll ── */
-const pills = document.querySelectorAll('.pill');
-const pillSections = ['wizard-city','harm-reduction','positivity','high-magic','higher-minds']
-  .map(id => document.getElementById(id))
-  .filter(Boolean);
-
-if (pills.length && pillSections.length) {
-  window.addEventListener('scroll', () => {
-    let current = '';
-    pillSections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 140) current = sec.id;
-    });
-    pills.forEach(pill => {
-      const href = pill.getAttribute('href').replace('#','');
-      pill.classList.toggle('active', href === current);
-    });
-  }, { passive: true });
-}
-
-/* ── Contact form ── */
-const form = document.querySelector('.contact-form');
-if (form) {
+/* ── MODULE: Contact form ────────────────────────────────────── */
+(function initContactForm() {
+  const form   = document.querySelector('.contact-form');
+  const status = document.getElementById('form-status');
+  if (!form || !status) return;
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const status = document.getElementById('form-status');
-    if (status) {
-      status.textContent = 'Your message has been sent into the universe. ✦';
-      status.style.opacity = '1';
-    }
+    status.textContent = 'Your message has been sent into the universe. ✦';
+    status.style.opacity = '1';
     form.reset();
   });
-}
+})();
+
+
+/* ================================================================
+   ADD NEW MODULES BELOW THIS LINE
+   Copy the pattern: (function initMyFeature() { ... })();
+   ================================================================ */
